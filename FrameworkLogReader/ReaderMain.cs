@@ -34,7 +34,11 @@ namespace FrameworkLogReader
 
             }
         }
-        
+
+
+
+        //todo look at extending tree view class!
+        #region file listing
         private void ListDirectory(TreeView treeView, string path)
         {
             treeView.Nodes.Clear();
@@ -51,6 +55,7 @@ namespace FrameworkLogReader
                 directoryNode.Nodes.Add(new TreeNode(file.Name,1,2));
             return directoryNode;
         }
+        #endregion file listing 
         
         public ReaderMain()
         {
@@ -119,17 +124,41 @@ namespace FrameworkLogReader
 
         private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            
         }
 
         private void itemTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-           // throw new System.NotImplementedException();
+            //MessageBox.Show("Path is: " + e.Node.FullPath);
+            if (e.Node != null && e.Node.Text != "")
+            {
+                TreeNode node = e.Node;
+                if (node.GetNodeCount(true) == 0)
+                {
+                    //must be a file as it has no children - that it knows of....phnarr 
+                    string pth = node.FullPath;
+                    
+                    if (! string.IsNullOrWhiteSpace(initDir) == true  && Directory.Exists((initDir)))
+                    {
+                        pth  = Directory.GetParent(initDir).ToString() +  (char) 92 + pth ;
+                        MessageBox.Show("Path is: " + pth);
+
+                        var res = FileHelper.ReadFile(pth);
+                        if (res.Item1 == true)
+                        {
+                            displayBox.Text = res.Item2;
+                        }
+                    }
+
+                   
+                }
+            }
+            //throw new System.NotImplementedException();
         }
 
         private void itemTree_Click(object sender, EventArgs e)
         {
-           // throw new System.NotImplementedException();
+            
+            // throw new System.NotImplementedException();
         }
 
         private void itemTree_MouseClick(object sender, MouseEventArgs e)
