@@ -11,8 +11,6 @@ C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\obj\Debug\Fra
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Bogus.dll
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Bogus.xml
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\obj\Debug\FrameworkLogReader.ReaderMain.resources
-C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\obj\Debug\FrameworkLogReader.csproj.CopyComplete
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Lib.dll
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Validation.dll
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Validation.xml
-C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Microsoft.Security.ApplicationId.Wizards.AutomaticRuleGenerationWizard.dll

@@ -124,12 +124,12 @@ namespace FrameworkLogReader
 
         private void itemTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            throw new System.NotImplementedException();
+           // throw new System.NotImplementedException();
         }
 
         private void itemTree_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+           // throw new System.NotImplementedException();
         }
 
         private void itemTree_MouseClick(object sender, MouseEventArgs e)
@@ -140,7 +140,7 @@ namespace FrameworkLogReader
         private void itemTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             //e.
-            throw new System.NotImplementedException();
+            
         }
     }
 }
