@@ -33,17 +33,76 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="AvalonDock, Version=4.60.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+          <HintPath>..\packages\Dirkster.AvalonDock.4.60.0\lib\net40\AvalonDock.dll</HintPath>
+        </Reference>
+        <Reference Include="AvalonDock.Themes.VS2013, Version=4.60.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+          <HintPath>..\packages\Dirkster.AvalonDock.Themes.VS2013.4.60.0\lib\net40\AvalonDock.Themes.VS2013.dll</HintPath>
+        </Reference>
         <Reference Include="Bogus, Version=34.0.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
           <HintPath>..\packages\Bogus.34.0.2\lib\net40\Bogus.dll</HintPath>
+        </Reference>
+        <Reference Include="Caliburn.Micro.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+          <HintPath>..\packages\Caliburn.Micro.Core.4.0.210\lib\netstandard2.0\Caliburn.Micro.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Caliburn.Micro.Platform, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+          <HintPath>..\packages\Caliburn.Micro.4.0.210\lib\net462\Caliburn.Micro.Platform.dll</HintPath>
+        </Reference>
+        <Reference Include="Caliburn.Micro.Platform.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+          <HintPath>..\packages\Caliburn.Micro.4.0.210\lib\net462\Caliburn.Micro.Platform.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+          <HintPath>..\packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
+        </Reference>
+        <Reference Include="DotNetProjects.Wpf.Extended.Toolkit, Version=4.6.78.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+          <HintPath>..\packages\DotNetProjects.Extended.Wpf.Toolkit.4.6.78\lib\net40\DotNetProjects.Wpf.Extended.Toolkit.dll</HintPath>
+        </Reference>
+        <Reference Include="Eir.CodeEditor, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Eir.CodeEditor.1.4.0\lib\netstandard2.0\Eir.CodeEditor.dll</HintPath>
+        </Reference>
+        <Reference Include="Gemini, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\GeminiWpf.1.0.60-beta\lib\net462\Gemini.dll</HintPath>
+        </Reference>
+        <Reference Include="Gemini.Modules.CodeEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Gemini.Modules.CodeEditor.1.0.60-beta\lib\net462\Gemini.Modules.CodeEditor.dll</HintPath>
+        </Reference>
+        <Reference Include="ICSharpCode.AvalonEdit, Version=6.3.0.90, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+          <HintPath>..\packages\AvalonEdit.6.3.0.90\lib\net462\ICSharpCode.AvalonEdit.dll</HintPath>
+        </Reference>
+        <Reference Include="ICSharpCode.TextEditor, Version=4.2.0.0, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a, processorArchitecture=MSIL">
+          <HintPath>..\packages\ICSharpCode.TextEditor.Extended.4.2.4\lib\net45\ICSharpCode.TextEditor.dll</HintPath>
         </Reference>
         <Reference Include="Lib, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\SplitterItemsControl.0.5.0\lib\net45\Lib.dll</HintPath>
         </Reference>
+        <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+          <HintPath>..\packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
+        </Reference>
         <Reference Include="Microsoft.Security.ApplicationId.Wizards.AutomaticRuleGenerationWizard">
           <HintPath>..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.Security.ApplicationId.Wizards.AutomaticRuleGenerationWizard\v4.0_10.0.0.0__31bf3856ad364e35\Microsoft.Security.ApplicationId.Wizards.AutomaticRuleGenerationWizard.dll</HintPath>
         </Reference>
+        <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Xaml.Behaviors.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=189c7f39020fabe0, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Design\Microsoft.Xaml.Behaviors.Design.dll</HintPath>
+        </Reference>
+        <Reference Include="mscorlib" />
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
+        <Reference Include="PresentationFramework.Aero" />
         <Reference Include="System" />
+        <Reference Include="System.ComponentModel.Composition" />
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+        <Reference Include="System.Configuration" />
         <Reference Include="System.Core" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.3.0\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Web" />
+        <Reference Include="System.Web.Extensions" />
+        <Reference Include="System.Xaml" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Data.DataSetExtensions" />
         <Reference Include="Microsoft.CSharp" />
@@ -56,9 +115,16 @@
         <Reference Include="Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
           <HintPath>..\packages\Validation.2.0.6.15003\lib\portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Validation.dll</HintPath>
         </Reference>
+        <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ClassExtensions.cs" />
+        <Compile Include="EditorTools\FindAndReplaceForm.cs" />
+        <Compile Include="EditorTools\FindAndReplaceForm.Designer.cs" />
+        <Compile Include="EditorTools\Globals.cs" />
+        <Compile Include="EditorTools\InputBox.cs" />
+        <Compile Include="EditorTools\TextEditorForm.cs" />
+        <Compile Include="EditorTools\TextEditorForm.Designer.cs" />
         <Compile Include="FileHelper.cs" />
         <Compile Include="RecursiveDirectoryListing.cs" />
         <Compile Include="ReaderMain.cs">
@@ -69,6 +135,8 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="EditorTools\FindAndReplaceForm.resx" />
+        <EmbeddedResource Include="EditorTools\TextEditorForm.resx" />
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>

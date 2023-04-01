@@ -38,6 +38,8 @@
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.workingDirectoyMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.fToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
@@ -45,9 +47,12 @@
             this.mainSplitter = new System.Windows.Forms.SplitContainer();
             this.itemTree = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.displayBox = new System.Windows.Forms.RichTextBox();
+            this.textEditorControl1 = new ICSharpCode.TextEditor.TextEditorControl();
+            this.displayBox = new ICSharpCode.TextEditor.TextEditorControl();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
@@ -63,10 +68,10 @@
             // 
             this.openButton.AutoSize = true;
             this.openButton.Image = ((System.Drawing.Image)(resources.GetObject("openButton.Image")));
-            this.openButton.Location = new System.Drawing.Point(1437, 494);
-            this.openButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.openButton.Location = new System.Drawing.Point(1078, 401);
+            this.openButton.Margin = new System.Windows.Forms.Padding(2);
             this.openButton.Name = "openButton";
-            this.openButton.Size = new System.Drawing.Size(105, 68);
+            this.openButton.Size = new System.Drawing.Size(79, 55);
             this.openButton.TabIndex = 0;
             this.openButton.Text = "Select Folder";
             this.openButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -75,19 +80,19 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1040, 383);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(780, 311);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(8, 7);
+            this.button2.Size = new System.Drawing.Size(6, 6);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // topToolBar
             // 
-            this.topToolBar.Location = new System.Drawing.Point(0, 28);
+            this.topToolBar.Location = new System.Drawing.Point(0, 24);
             this.topToolBar.Name = "topToolBar";
-            this.topToolBar.Size = new System.Drawing.Size(1792, 25);
+            this.topToolBar.Size = new System.Drawing.Size(1344, 25);
             this.topToolBar.TabIndex = 6;
             // 
             // mainMenu
@@ -95,8 +100,7 @@
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.FileMenu, this.EditMenu, this.ViewMenu, this.SettingsMenu });
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.mainMenu.Size = new System.Drawing.Size(1792, 28);
+            this.mainMenu.Size = new System.Drawing.Size(1344, 24);
             this.mainMenu.TabIndex = 7;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -104,43 +108,56 @@
             // 
             this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.workingDirectoyMenu });
             this.FileMenu.Name = "FileMenu";
-            this.FileMenu.Size = new System.Drawing.Size(44, 24);
+            this.FileMenu.Size = new System.Drawing.Size(37, 20);
             this.FileMenu.Text = "&File";
             this.FileMenu.Click += new System.EventHandler(this.FileMenu_Click);
             // 
             // workingDirectoyMenu
             // 
             this.workingDirectoyMenu.Name = "workingDirectoyMenu";
-            this.workingDirectoyMenu.Size = new System.Drawing.Size(193, 24);
+            this.workingDirectoyMenu.Size = new System.Drawing.Size(166, 22);
             this.workingDirectoyMenu.Text = "Working &Directoy";
             this.workingDirectoyMenu.Click += new System.EventHandler(this.workingDirectoyMenu_Click);
             // 
             // EditMenu
             // 
+            this.EditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.CopyMenu, this.sep1, this.fToolStripMenuItem });
             this.EditMenu.Name = "EditMenu";
-            this.EditMenu.Size = new System.Drawing.Size(47, 24);
+            this.EditMenu.Size = new System.Drawing.Size(39, 20);
             this.EditMenu.Text = "&Edit";
+            // 
+            // CopyMenu
+            // 
+            this.CopyMenu.Name = "CopyMenu";
+            this.CopyMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.CopyMenu.Size = new System.Drawing.Size(152, 22);
+            this.CopyMenu.Text = "&Copy";
+            // 
+            // fToolStripMenuItem
+            // 
+            this.fToolStripMenuItem.Name = "fToolStripMenuItem";
+            this.fToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fToolStripMenuItem.Text = "Find / Replace";
             // 
             // ViewMenu
             // 
             this.ViewMenu.Name = "ViewMenu";
-            this.ViewMenu.Size = new System.Drawing.Size(53, 24);
+            this.ViewMenu.Size = new System.Drawing.Size(44, 20);
             this.ViewMenu.Text = "&View";
             // 
             // SettingsMenu
             // 
             this.SettingsMenu.Name = "SettingsMenu";
-            this.SettingsMenu.Size = new System.Drawing.Size(74, 24);
+            this.SettingsMenu.Size = new System.Drawing.Size(61, 20);
             this.SettingsMenu.Text = "&Settings";
             // 
             // statusBar
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.StatusLabel });
             this.statusBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.statusBar.Location = new System.Drawing.Point(0, 941);
+            this.statusBar.Location = new System.Drawing.Point(0, 762);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusBar.Size = new System.Drawing.Size(1792, 24);
+            this.statusBar.Size = new System.Drawing.Size(1344, 22);
             this.statusBar.TabIndex = 10;
             this.statusBar.Text = "Status";
             this.statusBar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusBar_ItemClicked);
@@ -153,7 +170,7 @@
             this.StatusLabel.ForeColor = System.Drawing.Color.White;
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StatusLabel.Size = new System.Drawing.Size(141, 19);
+            this.StatusLabel.Size = new System.Drawing.Size(116, 17);
             this.StatusLabel.Spring = true;
             this.StatusLabel.Text = "No Directory Chosen!";
             this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -162,8 +179,7 @@
             // mainSplitter
             // 
             this.mainSplitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainSplitter.Location = new System.Drawing.Point(0, 53);
-            this.mainSplitter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainSplitter.Location = new System.Drawing.Point(0, 49);
             this.mainSplitter.Name = "mainSplitter";
             // 
             // mainSplitter.Panel1
@@ -174,9 +190,8 @@
             // 
             this.mainSplitter.Panel2.Controls.Add(this.splitContainer1);
             this.mainSplitter.Panel2.Controls.Add(this.treeView1);
-            this.mainSplitter.Size = new System.Drawing.Size(1792, 888);
-            this.mainSplitter.SplitterDistance = 403;
-            this.mainSplitter.SplitterWidth = 5;
+            this.mainSplitter.Size = new System.Drawing.Size(1344, 713);
+            this.mainSplitter.SplitterDistance = 302;
             this.mainSplitter.TabIndex = 11;
             // 
             // itemTree
@@ -186,10 +201,9 @@
             this.itemTree.ImageIndex = 0;
             this.itemTree.ImageList = this.imageList1;
             this.itemTree.Location = new System.Drawing.Point(0, 0);
-            this.itemTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemTree.Name = "itemTree";
             this.itemTree.SelectedImageIndex = 0;
-            this.itemTree.Size = new System.Drawing.Size(403, 888);
+            this.itemTree.Size = new System.Drawing.Size(302, 713);
             this.itemTree.TabIndex = 0;
             this.itemTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.itemTree_AfterSelect);
             this.itemTree.Click += new System.EventHandler(this.itemTree_Click);
@@ -201,54 +215,81 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "folder");
             this.imageList1.Images.SetKeyName(1, "file");
-            this.imageList1.Images.SetKeyName(2, "documentselected.png");
-            // 
-            // treeView1
-            // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeView1.Location = new System.Drawing.Point(-383, 5);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(360, 936);
-            this.treeView1.TabIndex = 6;
+            this.imageList1.Images.SetKeyName(2, "right-arrow.png");
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.textEditorControl1);
             this.splitContainer1.Panel1.Controls.Add(this.displayBox);
-            this.splitContainer1.Size = new System.Drawing.Size(1384, 888);
-            this.splitContainer1.SplitterDistance = 922;
+            this.splitContainer1.Size = new System.Drawing.Size(1038, 713);
+            this.splitContainer1.SplitterDistance = 691;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
+            // 
+            // textEditorControl1
+            // 
+            this.textEditorControl1.Highlighting = null;
+            this.textEditorControl1.Location = new System.Drawing.Point(181, 295);
+            this.textEditorControl1.Name = "textEditorControl1";
+            this.textEditorControl1.Size = new System.Drawing.Size(8, 8);
+            this.textEditorControl1.TabIndex = 1;
+            this.textEditorControl1.Text = "textEditorControl1";
             // 
             // displayBox
             // 
             this.displayBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayBox.Highlighting = null;
+            this.displayBox.IsIconBarVisible = true;
             this.displayBox.Location = new System.Drawing.Point(0, 0);
             this.displayBox.Name = "displayBox";
-            this.displayBox.Size = new System.Drawing.Size(922, 888);
+            this.displayBox.Size = new System.Drawing.Size(691, 713);
             this.displayBox.TabIndex = 0;
-            this.displayBox.Text = "";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeView1.Location = new System.Drawing.Point(-287, 4);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(271, 752);
+            this.treeView1.TabIndex = 6;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(100, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip";
+            // 
+            // sep1
+            // 
+            this.sep1.Name = "sep1";
+            this.sep1.Size = new System.Drawing.Size(149, 6);
             // 
             // ReaderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1792, 965);
+            this.ClientSize = new System.Drawing.Size(1344, 784);
             this.Controls.Add(this.mainSplitter);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.topToolBar);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.openButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ReaderMain";
             this.Text = "Proact Log Reader";
+            this.Load += new System.EventHandler(this.ReaderMain_Load);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.statusBar.ResumeLayout(false);
@@ -264,7 +305,16 @@
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.RichTextBox displayBox;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+
+        private System.Windows.Forms.ToolStripMenuItem fToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripMenuItem CopyMenu;
+        private System.Windows.Forms.ToolStripSeparator sep1;
+
+        private ICSharpCode.TextEditor.TextEditorControl textEditorControl1;
+
+        private ICSharpCode.TextEditor.TextEditorControl displayBox;
 
         private System.Windows.Forms.SplitContainer splitContainer1;
 

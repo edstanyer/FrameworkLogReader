@@ -10,11 +10,17 @@ using System.Windows.Forms;
 using System.IO;
 using Bogus;
 using Bogus.DataSets;
+using ICSharpCode.TextEditor.Document;
 
 namespace FrameworkLogReader
 {
+
     public partial class ReaderMain : Form
     {
+
+
+        
+        
         private string initDir = "";
         public string InitialDirectory
         {
@@ -29,7 +35,12 @@ namespace FrameworkLogReader
                 if(Directory.Exists(dir))
                 {
                     initDir = dir;
-                    ListDirectory(itemTree, initDir);           
+                    ListDirectory(itemTree, initDir);
+                    FrameworkLogReader.Properties.Settings.Default.WorkingDir = initDir;
+                    FrameworkLogReader.Properties.Settings.Default.Save();
+                    StatusLabel.Text = "Working Directory: " + InitialDirectory;//.Replace(Path.GetDirectoryName(fd.SelectedPath), "");
+                    StatusLabel.ForeColor = Color.Black;
+                    StatusLabel.BackColor = Color.Transparent;
                 }
 
             }
@@ -41,6 +52,7 @@ namespace FrameworkLogReader
         #region file listing
         private void ListDirectory(TreeView treeView, string path)
         {
+            
             treeView.Nodes.Clear();
             var rootDirectoryInfo = new DirectoryInfo(path);
             treeView.Nodes.Add(CreateDirectoryNode(rootDirectoryInfo));
@@ -50,9 +62,22 @@ namespace FrameworkLogReader
         {
             var directoryNode = new TreeNode(directoryInfo.Name, 0,0);
             foreach (var directory in directoryInfo.GetDirectories())
+            {
                 directoryNode.Nodes.Add(CreateDirectoryNode(directory));
+                
+            }
+
             foreach (var file in directoryInfo.GetFiles())
+            {
+                string ext = Path.GetExtension((file.ToString()));
+
+                if (!ext.Contains("."))
+                {
+                }
+
                 directoryNode.Nodes.Add(new TreeNode(file.Name,1,2));
+                
+            }
             return directoryNode;
         }
         #endregion file listing 
@@ -65,24 +90,7 @@ namespace FrameworkLogReader
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            /*FolderBrowserDialog fd = new FolderBrowserDialog();
-
-            fd.RootFolder = Environment.SpecialFolder.Desktop;
-
-            DialogResult res= fd.ShowDialog();
-            if (res == DialogResult.OK)
-            {
-               Console.WriteLine( "Folder Selected: " + fd.SelectedPath);
-               List<string> fs = new List<string>();
-               RecursiveDirectoryListing r = new RecursiveDirectoryListing();
-
-               r.GetFiles(ref fs, fd.SelectedPath, true);
-
-            }
-            else
-            {
-                Console.WriteLine("Dialog cancelled");
-            }*/
+           
         }
         private bool GetWorkingDirectory()
         {
@@ -95,9 +103,7 @@ namespace FrameworkLogReader
             if (res == DialogResult.OK)
             {
                 InitialDirectory = fd.SelectedPath;
-                StatusLabel.Text = "Working Directory: " + InitialDirectory.Replace(Path.GetDirectoryName(fd.SelectedPath), "");
-                StatusLabel.ForeColor = Color.Black;
-                StatusLabel.BackColor = Color.Transparent;
+               
                 return true;
             }
             else
@@ -140,12 +146,18 @@ namespace FrameworkLogReader
                     if (! string.IsNullOrWhiteSpace(initDir) == true  && Directory.Exists((initDir)))
                     {
                         pth  = Directory.GetParent(initDir).ToString() +  (char) 92 + pth ;
-                        MessageBox.Show("Path is: " + pth);
+                        //MessageBox.Show("Path is: " + pth);
 
                         var res = FileHelper.ReadFile(pth);
                         if (res.Item1 == true)
                         {
                             displayBox.Text = res.Item2;
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                "Failed to open file: " + Environment.NewLine + Environment.NewLine +
+                                res.Item2.ToString(), "Bollox", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
@@ -163,13 +175,64 @@ namespace FrameworkLogReader
 
         private void itemTree_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            //make some changes
         }
 
         private void itemTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             //e.
             
+        }
+
+        private void ReaderMain_Load(object sender, EventArgs e)
+        {
+            InitialDirectory = FrameworkLogReader.Properties.Settings.Default.WorkingDir;
+            
+            displayBox.Highlighting = "Java";
+            
+            //throw new System.NotImplementedException();
+            
+            int offset = 5;
+            int length = 5;
+            TextMarker marker = new TextMarker(offset, length, TextMarkerType.WaveLine, Color.Red);
+            displayBox.Document.MarkerStrategy.AddMarker(marker);
+            //displayBox.EnableRedo();
+            //displayBox.EnableRedo = true;
+            setupDisplayBox();
+            
+
+        }
+
+        private void setupDisplayBox()
+        {
+            try
+            {
+                
+                TextMarker errorMarker = new TextMarker(5, 5, TextMarkerType.SolidBlock, Color.Crimson);
+
+                //displayBox.Document.TextEditorProperties.
+
+                HighlightRuleSet r = new HighlightRuleSet();
+                //r.
+                    
+                displayBox.Highlighting = "ERROR";
+                displayBox.EnableFolding = true;
+                displayBox.ShowEOLMarkers = true;
+                displayBox.ShowSpaces = true;
+                displayBox.ShowTabs = true;
+                displayBox.ShowHRuler = true;
+                displayBox.ShowVRuler = true;
+                displayBox.ShowMatchingBracket = true;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(
+                    "An error occureed while attempting to format display:" + Environment.NewLine +
+                    Environment.NewLine + e.Message, "Setup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+                //throw;
+            }
         }
     }
 }
