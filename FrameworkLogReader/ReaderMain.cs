@@ -11,6 +11,8 @@ using System.IO;
 using Bogus;
 using Bogus.DataSets;
 using ICSharpCode.TextEditor.Document;
+using ICSharpCode.TextEditor;
+using TextEditor;
 
 namespace FrameworkLogReader
 {
@@ -199,7 +201,7 @@ namespace FrameworkLogReader
             //displayBox.EnableRedo();
             //displayBox.EnableRedo = true;
             setupDisplayBox();
-            
+            HightLightKeywords();
 
         }
 
@@ -212,7 +214,7 @@ namespace FrameworkLogReader
 
                 //displayBox.Document.TextEditorProperties.
 
-                HighlightRuleSet r = new HighlightRuleSet();
+               //HighlightRuleSet r = new HighlightRuleSet();
                 //r.
                     
                 displayBox.Highlighting = "ERROR";
@@ -234,5 +236,31 @@ namespace FrameworkLogReader
                 //throw;
             }
         }
+
+        private void  HightLightKeywords()
+        {
+            bool _lastSearchLoopedAround;
+            TextEditorSearcher _search = new TextEditorSearcher();
+            //TODO: find all keywords
+            //create: highlight groups
+            //colour highlight groups
+            TextEditorControl Editor = displayBox;
+            string texttosearchfor = "ERROR";
+            _search.ClearScanRegion();
+            _search.LookFor=texttosearchfor;
+            _search.MatchWholeWordOnly = true;
+            int startFrom = 0;
+            
+            TextRange range = _search.FindNext(startFrom, false, out _lastSearchLoopedAround);
+            //var sm = displayBox.ActiveTextAreaControl.SelectionManager;
+            MessageBox.Show("COCK");
+            
+            
+            
+        }
+
+
     }
+    
+    
 }
