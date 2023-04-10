@@ -476,5 +476,6 @@ namespace TextEditor
 		~HighlightGroup() { Dispose(); }
 
 		public IList<TextMarker> Markers { get { return _markers.AsReadOnly(); } }
+	
 	}
 }

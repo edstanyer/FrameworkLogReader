@@ -52,11 +52,12 @@
             this.textEditorControl1 = new ICSharpCode.TextEditor.TextEditorControl();
             this.displayBox = new ICSharpCode.TextEditor.TextEditorControl();
             this.HighlightGroup = new System.Windows.Forms.GroupBox();
-            this.infoCheck = new System.Windows.Forms.CheckBox();
-            this.WarningCheck = new System.Windows.Forms.CheckBox();
-            this.errorCheck = new System.Windows.Forms.CheckBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.label1 = new System.Windows.Forms.Label();
+            this.createLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.modifiedLabel = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
@@ -277,52 +278,16 @@
             // HighlightGroup
             // 
             this.HighlightGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.HighlightGroup.Controls.Add(this.infoCheck);
-            this.HighlightGroup.Controls.Add(this.WarningCheck);
-            this.HighlightGroup.Controls.Add(this.errorCheck);
+            this.HighlightGroup.Controls.Add(this.modifiedLabel);
+            this.HighlightGroup.Controls.Add(this.label3);
+            this.HighlightGroup.Controls.Add(this.createLabel);
+            this.HighlightGroup.Controls.Add(this.label1);
             this.HighlightGroup.Location = new System.Drawing.Point(3, 2);
             this.HighlightGroup.Name = "HighlightGroup";
-            this.HighlightGroup.Size = new System.Drawing.Size(308, 172);
+            this.HighlightGroup.Size = new System.Drawing.Size(314, 404);
             this.HighlightGroup.TabIndex = 0;
             this.HighlightGroup.TabStop = false;
-            this.HighlightGroup.Text = "Highlighting:";
-            // 
-            // infoCheck
-            // 
-            this.infoCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.infoCheck.Checked = true;
-            this.infoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.infoCheck.Location = new System.Drawing.Point(27, 75);
-            this.infoCheck.Name = "infoCheck";
-            this.infoCheck.Size = new System.Drawing.Size(85, 21);
-            this.infoCheck.TabIndex = 2;
-            this.infoCheck.Text = "Information";
-            this.infoCheck.UseVisualStyleBackColor = true;
-            // 
-            // WarningCheck
-            // 
-            this.WarningCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.WarningCheck.Checked = true;
-            this.WarningCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.WarningCheck.Location = new System.Drawing.Point(27, 47);
-            this.WarningCheck.Name = "WarningCheck";
-            this.WarningCheck.Size = new System.Drawing.Size(85, 22);
-            this.WarningCheck.TabIndex = 1;
-            this.WarningCheck.Text = "Warnings";
-            this.WarningCheck.UseVisualStyleBackColor = true;
-            // 
-            // errorCheck
-            // 
-            this.errorCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.errorCheck.Checked = true;
-            this.errorCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.errorCheck.Location = new System.Drawing.Point(27, 19);
-            this.errorCheck.Name = "errorCheck";
-            this.errorCheck.Size = new System.Drawing.Size(85, 22);
-            this.errorCheck.TabIndex = 0;
-            this.errorCheck.Text = "Errors";
-            this.errorCheck.UseVisualStyleBackColor = true;
-            this.errorCheck.CheckedChanged += new System.EventHandler(this.errorCheck_CheckedChanged);
+            this.HighlightGroup.Text = "File Information";
             // 
             // treeView1
             // 
@@ -339,6 +304,41 @@
             this.toolStrip1.Size = new System.Drawing.Size(100, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Created:";
+            // 
+            // createLabel
+            // 
+            this.createLabel.AutoSize = true;
+            this.createLabel.Location = new System.Drawing.Point(57, 30);
+            this.createLabel.Name = "createLabel";
+            this.createLabel.Size = new System.Drawing.Size(22, 13);
+            this.createLabel.TabIndex = 1;
+            this.createLabel.Text = "NA";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(6, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 21);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Modified:";
+            // 
+            // modifiedLabel
+            // 
+            this.modifiedLabel.AutoSize = true;
+            this.modifiedLabel.Location = new System.Drawing.Point(57, 60);
+            this.modifiedLabel.Name = "modifiedLabel";
+            this.modifiedLabel.Size = new System.Drawing.Size(22, 13);
+            this.modifiedLabel.TabIndex = 3;
+            this.modifiedLabel.Text = "NA";
             // 
             // ReaderMain
             // 
@@ -370,13 +370,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.HighlightGroup.ResumeLayout(false);
+            this.HighlightGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.CheckBox errorCheck;
-        private System.Windows.Forms.CheckBox WarningCheck;
-        private System.Windows.Forms.CheckBox infoCheck;
+        private System.Windows.Forms.Label createLabel;
+
+        private System.Windows.Forms.Label modifiedLabel;
+        private System.Windows.Forms.Label label3;
+
+        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.GroupBox HighlightGroup;
 

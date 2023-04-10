@@ -21,9 +21,7 @@ namespace FrameworkLogReader
 
     public partial class ReaderMain : Form
     {
-        private HighlightGroup Errors;
-        private HighlightGroup Warnings;
-        private HighlightGroup Info;
+        private Dictionary<TreeNode, FileInfo> fileDetails;
 
         private string initDir = "";
 
@@ -61,18 +59,19 @@ namespace FrameworkLogReader
         #region file listing
         private void ListDirectory(TreeView treeView, string path)
         {
-            
+            fileDetails = new Dictionary<TreeNode, FileInfo>();
             treeView.Nodes.Clear();
             var rootDirectoryInfo = new DirectoryInfo(path);
-            treeView.Nodes.Add(CreateDirectoryNode(rootDirectoryInfo));
+            treeView.Nodes.Add(CreateDirectoryNode(rootDirectoryInfo,ref fileDetails));
         }
 
-        private static TreeNode CreateDirectoryNode(DirectoryInfo directoryInfo)
+        private static TreeNode CreateDirectoryNode(DirectoryInfo directoryInfo,  ref Dictionary<TreeNode, FileInfo> fileDetails)
         {
+            fileDetails = new Dictionary<TreeNode, FileInfo>();
             var directoryNode = new TreeNode(directoryInfo.Name, 0,0);
             foreach (var directory in directoryInfo.GetDirectories())
             {
-                directoryNode.Nodes.Add(CreateDirectoryNode(directory));
+                directoryNode.Nodes.Add(CreateDirectoryNode(directory, ref fileDetails));
                 
             }
 
@@ -84,7 +83,11 @@ namespace FrameworkLogReader
                 {
                 }
 
-                directoryNode.Nodes.Add(new TreeNode(file.Name,1,2));
+                string fileString = file.Name; //+ "[Created: " + file.CreationTime.ToString() + " Modified: " +
+                                    //file.LastWriteTime.ToString() + "]"; 
+                
+                directoryNode.Nodes.Add(new TreeNode(fileString,1,2));
+                fileDetails.Add(directoryNode.LastNode, file);
                 
             }
             return directoryNode;
@@ -100,14 +103,14 @@ namespace FrameworkLogReader
         private void openButton_Click(object sender, EventArgs e)
         {
            
-        }
+        } //DEAD
+        
         /// <summary>
         /// Browse for the working parent directory
         /// </summary>
         /// <returns></returns>
         private bool GetWorkingDirectory()
         {
-            
             FolderBrowserDialog fd = new FolderBrowserDialog();
 
             fd.RootFolder = Environment.SpecialFolder.Desktop;
@@ -135,11 +138,11 @@ namespace FrameworkLogReader
         private void FileMenu_Click(object sender, EventArgs e)
         {
             
-        }
+        }//DEAD 
 
         private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-        }
+        }//DEAD
 
         private void itemTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -154,23 +157,29 @@ namespace FrameworkLogReader
                     {
                         pth  = Directory.GetParent(initDir).ToString() +  (char) 92 + pth ;
                         OpenFile(pth);
+                        if (fileDetails != null && fileDetails.ContainsKey(node))
+                        {
+                            createLabel.Text = fileDetails[node].CreationTime.ToString();
+                            modifiedLabel.Text = fileDetails[node].LastWriteTime.ToString();
+                        }
+                        else
+                        {
+                            createLabel.Text = "NA";
+                            modifiedLabel.Text = "NA";
+                        }
                     }
 
                    
                 }
             }
-            //throw new System.NotImplementedException();
         }
 
-        private void itemTree_Click(object sender, EventArgs e)
+        private void itemTree_Click(object sender, EventArgs e)//DEAD
         {
-            
-            // throw new System.NotImplementedException();
         }
 
-        private void itemTree_MouseClick(object sender, MouseEventArgs e)
+        private void itemTree_MouseClick(object sender, MouseEventArgs e)//DEAD
         {
-            //make some changes
         }
 
         private void itemTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -221,27 +230,22 @@ namespace FrameworkLogReader
             #endregion read and display the file
 
             #region set basic highlight
-           
-            /*Errors = new HighlightGroup(displayBox);
-            Warnings = new HighlightGroup(displayBox);
-            Info = new HighlightGroup(displayBox);*/
-            
              FindAll("ERROR", Color.Crimson, Color.Azure);
              FindAll("WARN", Color.Yellow, Color.Black);
              FindAll("INFO", Color.Chartreuse, Color.Black);
-            
             #endregion set basic highlight
 
         }
 
-        private HighlightGroup FindAll(string phrase, Color blockColour, Color textColour)
+        private void FindAll(string phrase, Color blockColour, Color textColour)
         {
-            HighlightGroup hg = new HighlightGroup(displayBox);
+            #region usual file checks
             if (string.IsNullOrEmpty( phrase))
             {
-                return hg;
+                return;
             }
-
+            #endregion usual file checks
+            
             bool looped = false;
             int offset = 0, count = 0;
             TextEditorSearcher searcher = new TextEditorSearcher();
@@ -262,30 +266,19 @@ namespace FrameworkLogReader
                 var m = new TextMarker(range.Offset, range.Length, 
                     TextMarkerType.SolidBlock, blockColour, textColour);
                 
-                hg.AddMarker(m);
-                HighlightGroup.UseCompatibleTextRendering = true;
-                Application.DoEvents();
+                //add this one, but look at modualising this if needs be!
+                displayBox.Document.MarkerStrategy.AddMarker(m);    
             }
 
-            return hg;
-
-
         }
 
 
-        private void errorCheck_CheckedChanged(object sender, EventArgs e)
+        private void errorCheck_CheckedChanged(object sender, EventArgs e)//DEAD
         {
-
-            
-            
-
         }
 
-        private void itemTree_MouseUp(object sender, MouseEventArgs e)
+        private void itemTree_MouseUp(object sender, MouseEventArgs e)//DEAD
         {
-            //throw new System.NotImplementedException();
         }
     }
-    
-    
 }
