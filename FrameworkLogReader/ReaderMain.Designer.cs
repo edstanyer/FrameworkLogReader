@@ -39,6 +39,7 @@
             this.workingDirectoyMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
             this.fToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,9 +51,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textEditorControl1 = new ICSharpCode.TextEditor.TextEditorControl();
             this.displayBox = new ICSharpCode.TextEditor.TextEditorControl();
+            this.HighlightGroup = new System.Windows.Forms.GroupBox();
+            this.infoCheck = new System.Windows.Forms.CheckBox();
+            this.WarningCheck = new System.Windows.Forms.CheckBox();
+            this.errorCheck = new System.Windows.Forms.CheckBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
@@ -61,7 +65,9 @@
             this.mainSplitter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.HighlightGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // openButton
@@ -130,13 +136,18 @@
             // 
             this.CopyMenu.Name = "CopyMenu";
             this.CopyMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.CopyMenu.Size = new System.Drawing.Size(152, 22);
+            this.CopyMenu.Size = new System.Drawing.Size(149, 22);
             this.CopyMenu.Text = "&Copy";
+            // 
+            // sep1
+            // 
+            this.sep1.Name = "sep1";
+            this.sep1.Size = new System.Drawing.Size(146, 6);
             // 
             // fToolStripMenuItem
             // 
             this.fToolStripMenuItem.Name = "fToolStripMenuItem";
-            this.fToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.fToolStripMenuItem.Text = "Find / Replace";
             // 
             // ViewMenu
@@ -192,6 +203,7 @@
             this.mainSplitter.Panel2.Controls.Add(this.treeView1);
             this.mainSplitter.Size = new System.Drawing.Size(1344, 713);
             this.mainSplitter.SplitterDistance = 302;
+            this.mainSplitter.SplitterWidth = 8;
             this.mainSplitter.TabIndex = 11;
             // 
             // itemTree
@@ -208,6 +220,7 @@
             this.itemTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.itemTree_AfterSelect);
             this.itemTree.Click += new System.EventHandler(this.itemTree_Click);
             this.itemTree.MouseClick += new System.Windows.Forms.MouseEventHandler(this.itemTree_MouseClick);
+            this.itemTree.MouseUp += new System.Windows.Forms.MouseEventHandler(this.itemTree_MouseUp);
             // 
             // imageList1
             // 
@@ -219,6 +232,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
@@ -228,9 +242,13 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.textEditorControl1);
             this.splitContainer1.Panel1.Controls.Add(this.displayBox);
-            this.splitContainer1.Size = new System.Drawing.Size(1038, 713);
-            this.splitContainer1.SplitterDistance = 691;
-            this.splitContainer1.SplitterWidth = 3;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.HighlightGroup);
+            this.splitContainer1.Size = new System.Drawing.Size(1034, 713);
+            this.splitContainer1.SplitterDistance = 688;
+            this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 7;
             // 
             // textEditorControl1
@@ -249,8 +267,62 @@
             this.displayBox.IsIconBarVisible = true;
             this.displayBox.Location = new System.Drawing.Point(0, 0);
             this.displayBox.Name = "displayBox";
-            this.displayBox.Size = new System.Drawing.Size(691, 713);
+            this.displayBox.ReadOnly = true;
+            this.displayBox.ShowEOLMarkers = true;
+            this.displayBox.ShowSpaces = true;
+            this.displayBox.ShowTabs = true;
+            this.displayBox.Size = new System.Drawing.Size(686, 711);
             this.displayBox.TabIndex = 0;
+            // 
+            // HighlightGroup
+            // 
+            this.HighlightGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.HighlightGroup.Controls.Add(this.infoCheck);
+            this.HighlightGroup.Controls.Add(this.WarningCheck);
+            this.HighlightGroup.Controls.Add(this.errorCheck);
+            this.HighlightGroup.Location = new System.Drawing.Point(3, 2);
+            this.HighlightGroup.Name = "HighlightGroup";
+            this.HighlightGroup.Size = new System.Drawing.Size(308, 172);
+            this.HighlightGroup.TabIndex = 0;
+            this.HighlightGroup.TabStop = false;
+            this.HighlightGroup.Text = "Highlighting:";
+            // 
+            // infoCheck
+            // 
+            this.infoCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.infoCheck.Checked = true;
+            this.infoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.infoCheck.Location = new System.Drawing.Point(27, 75);
+            this.infoCheck.Name = "infoCheck";
+            this.infoCheck.Size = new System.Drawing.Size(85, 21);
+            this.infoCheck.TabIndex = 2;
+            this.infoCheck.Text = "Information";
+            this.infoCheck.UseVisualStyleBackColor = true;
+            // 
+            // WarningCheck
+            // 
+            this.WarningCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.WarningCheck.Checked = true;
+            this.WarningCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.WarningCheck.Location = new System.Drawing.Point(27, 47);
+            this.WarningCheck.Name = "WarningCheck";
+            this.WarningCheck.Size = new System.Drawing.Size(85, 22);
+            this.WarningCheck.TabIndex = 1;
+            this.WarningCheck.Text = "Warnings";
+            this.WarningCheck.UseVisualStyleBackColor = true;
+            // 
+            // errorCheck
+            // 
+            this.errorCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.errorCheck.Checked = true;
+            this.errorCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.errorCheck.Location = new System.Drawing.Point(27, 19);
+            this.errorCheck.Name = "errorCheck";
+            this.errorCheck.Size = new System.Drawing.Size(85, 22);
+            this.errorCheck.TabIndex = 0;
+            this.errorCheck.Text = "Errors";
+            this.errorCheck.UseVisualStyleBackColor = true;
+            this.errorCheck.CheckedChanged += new System.EventHandler(this.errorCheck_CheckedChanged);
             // 
             // treeView1
             // 
@@ -267,11 +339,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(100, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip";
-            // 
-            // sep1
-            // 
-            this.sep1.Name = "sep1";
-            this.sep1.Size = new System.Drawing.Size(149, 6);
             // 
             // ReaderMain
             // 
@@ -299,11 +366,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).EndInit();
             this.mainSplitter.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.HighlightGroup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.CheckBox errorCheck;
+        private System.Windows.Forms.CheckBox WarningCheck;
+        private System.Windows.Forms.CheckBox infoCheck;
+
+        private System.Windows.Forms.GroupBox HighlightGroup;
 
         private System.Windows.Forms.ToolStrip toolStrip1;
 

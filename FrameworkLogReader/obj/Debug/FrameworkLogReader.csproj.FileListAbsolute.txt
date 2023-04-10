@@ -76,3 +76,4 @@ C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\en\
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\en\Microsoft.Windows.Design.Interaction.resources.dll
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\obj\Debug\FrameworkLogReader.EditorTools.FindAndReplaceForm.resources
 C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\obj\Debug\FrameworkLogReader.EditorTools.TextEditorForm.resources
+C:\Users\edsta\RiderProjects\FrameworkLogReader\FrameworkLogReader\bin\Debug\Cyotek.Windows.Forms.ColorPicker.dll

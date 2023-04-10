@@ -54,6 +54,9 @@
         <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
           <HintPath>..\packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
         </Reference>
+        <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
+          <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.2.0.0-beta.7\lib\net48\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
+        </Reference>
         <Reference Include="DotNetProjects.Wpf.Extended.Toolkit, Version=4.6.78.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
           <HintPath>..\packages\DotNetProjects.Extended.Wpf.Toolkit.4.6.78\lib\net40\DotNetProjects.Wpf.Extended.Toolkit.dll</HintPath>
         </Reference>
